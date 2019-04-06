@@ -1,14 +1,30 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+      กิจกรรมที่ต้องทำ
     </ion-title>
+    <ion-buttons end padding>
+    <button ion-botton color="secondary" outline (click)="goToAddTodo()">
+        Add
+    </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+    <p>Added Activities</p>
+    <ion-list>
+      <ion-item-sliding *ngFor="let todo of addedToDoList">
+        <ion-item>
+          <h2>{{todo.title}}</h2>
+          <h2>{{todo.description}}</h2>
+        </ion-item>
+
+        <ion-item-options side="right">
+          <button ion-button color="danger" (click)="removeItem(todo)">
+            Delete
+          </button>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-content>
